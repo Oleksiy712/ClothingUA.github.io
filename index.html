@@ -48,7 +48,12 @@
     <p>Адреса: м. Луцьк, вул. Конякіна, 7</p>
     </div>
 
-  <div class="floating-map" id="floatingMap">
+  <footer>
+  <p>&copy; 2025 ClothingUA. Всі права захищені.</p>
+</footer>
+
+<!-- СЮДИ ВСТАВЛЯЄМО HTML КАРТИ -->
+<div class="floating-map" id="floatingMap">
   <button class="close-map" onclick="closeMap()">×</button>
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.356142488314!2d25.317857915684977!3d50.74709647950727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47248df6ec94ff1d%3A0xcaba530a983914d2!2sVulytsya%20Konyakina%2C%207%2C%20Lutsk!5e0!3m2!1suk!2sua!4v1686600000000!5m2!1suk!2sua"
@@ -59,8 +64,17 @@
   <button class="map-button" onclick="openMap()">Показати карту</button>
 </div>
 
-    </a>
-  </div>
-  </footer>
+<!-- JavaScript -->
+<script>
+  function closeMap() {
+    document.getElementById('floatingMap').style.display = 'none';
+  }
+
+  function openMap() {
+    document.getElementById('floatingMap').style.display = 'block';
+  }
+</script>
+
 </body>
 </html>
+
