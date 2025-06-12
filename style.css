@@ -197,6 +197,93 @@ footer {
   background-color: #0056b3;
 }
 
+/* Базова адаптація для мобільних пристроїв */
+@media (max-width: 768px) {
+  /* Навігація */
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  nav a {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+  }
+
+  nav a:hover {
+    background-color: #0056b3;
+  }
+
+  /* Заголовок */
+  header h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  /* Категорії - фото і текст */
+  .category {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .category img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .category h3 {
+    font-size: 20px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  /* Основний блок */
+  main {
+    padding: 10px;
+  }
+
+  /* Футер */
+  footer {
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 10px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-info, .footer-map {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  /* Плаваюча карта (якщо є) */
+  .floating-map {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 90vw;
+    max-width: 300px;
+    height: auto;
+    padding: 10px;
+  }
+
+  .floating-map iframe {
+    width: 100%;
+    height: 180px;
+  }
+}
 
 
 /* Картки товарів на сторінці категорії */
@@ -292,3 +379,4 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
