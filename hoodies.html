@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Худі - ClothingUA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>ClothingUA</h1>
+  <nav>
+    <a href="index.html">Головна</a>
+    <a href="hoodies.html" class="active">Худі</a>
+    <a href="shorts.html">Шорти</a>
+    <a href="tshirts.html">Футболки</a>
+    <a href="pants.html">Штани</a>
+    <a href="jeans.html">Джинси</a>
+    <a href="cart.html">Корзина</a>
+    <a href="contact.html">Контакти</a>
+    <a href="register.html">Реєстрація</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Худі</h2>
+  <div class="product-list">
+    <div class="product-card">
+      <img src="images/hoodie_white.jpg" alt="Біле худі" />
+      <div class="product-info">
+        <h4>Біле худі</h4>
+        <p>Розмір: S, M, L, XL</p>
+        <p>Колір: Білий</p>
+        <p class="price">799 грн</p>
+        <button class="add-to-cart-btn" data-name="Біле худі" data-price="799">Додати до корзини</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/hoodie_black.jpg" alt="Чорне худі" />
+      <div class="product-info">
+        <h4>Чорне худі</h4>
+        <p>Розмір: S, M, L, XL</p>
+        <p>Колір: Чорний</p>
+        <p class="price">799 грн</p>
+        <button class="add-to-cart-btn" data-name="Чорне худі" data-price="799">Додати до корзини</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Більше 5 років на ринку.&copy; 2025 ClothingUA. Всі права захищені.</p>
+    <p>Телефон: +38 (067) 123-45-67</p>
+    <p>Email: info@clothingua.com</p>
+    <p>Адреса: м. Луцьк, вул. Конякіна, 7</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      const price = btn.dataset.price;
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({name, price});
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`${name} додано до корзини!`);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Корзина</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 700px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #eee;
+    }
+    button {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Ваша корзина</h1></header>
+  <main>
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Фото</th>
+          <th>Назва</th>
+          <th>Розмір</th>
+          <th>Колір</th>
+          <th>Ціна</th>
+          <th>Кількість</th>
+          <th>Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Тут будуть товари -->
+      </tbody>
+    </table>
+    <p id="emptyMessage">Корзина порожня.</p>
+
+    <a href="index.html" class="back-button">← Продовжити покупки</a>
+  </main>
+
+  <script>
+    const cartTableBody = document.querySelector('#cartTable tbody');
+    const emptyMessage = document.getElementById('emptyMessage');
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      cartTableBody.innerHTML = '';
+
+      if (cart.length === 0) {
+        emptyMessage.style.display = 'block';
+        document.getElementById('cartTable').style.display = 'none';
+        return;
+      }
+
+      emptyMessage.style.display = 'none';
+      document.getElementById('cartTable').style.display = 'table';
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+          <td><img src="${item.image}" alt="${item.name}" width="50" /></td>
+          <td>${item.name}</td>
+          <td>${item.size}</td>
+          <td>${item.color}</td>
+          <td>${item.price} грн</td>
+          <td>${item.quantity}</td>
+          <td><button data-index="${index}">❌</button></td>
+        `;
+
+        cartTableBody.appendChild(row);
+      });
+
+      // Додати обробник видалення товару
+      cartTableBody.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const index = e.target.getAttribute('data-index');
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

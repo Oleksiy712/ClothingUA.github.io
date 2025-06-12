@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Реєстрація</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Реєстрація</h1></header>
+  <main>
+    <form id="registerForm">
+      <label>
+        Ім'я користувача:<br />
+        <input type="text" id="username" required />
+      </label><br /><br />
+
+      <label>
+        Email:<br />
+        <input type="email" id="email" required />
+      </label><br /><br />
+
+      <label>
+        Пароль:<br />
+        <input type="password" id="password" required minlength="6" />
+      </label><br /><br />
+
+      <button type="submit">Зареєструватися</button>
+    </form>
+
+    <p id="message"></p>
+    <p>Вже є акаунт? <a href="login.html">Увійти</a></p>
+  </main>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+
+      // Завантажуємо користувачів з localStorage
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+
+      // Перевіряємо, чи email вже є
+      if (users.find(user => user.email === email)) {
+        message.textContent = 'Цей email вже зареєстрований.';
+        message.style.color = 'red';
+        return;
+      }
+
+      // Додаємо нового користувача
+      users.push({ username, email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      message.textContent = 'Реєстрація пройшла успішно! Тепер ви можете увійти.';
+      message.style.color = 'green';
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>

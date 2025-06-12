@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Чорні шорти</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Чорні шорти</h1></header>
+  <main>
+    <img src="images/shorts_black.jpg" alt="Чорні шорти" width="250" />
+    <p>Розмір: S, M, L</p>
+    <p>Колір: Чорний</p>
+    <p>Ціна: 499 грн</p>
+
+    <button id="addToCartBtn">Додати до корзини</button>
+
+    <br><a href="shorts.html">← Назад до шортів</a>
+  </main>
+
+  <script>
+    const product = {
+      id: 'shorts_black_01',
+      name: 'Чорні шорти',
+      size: 'S, M, L',
+      color: 'Чорний',
+      price: 499,
+      image: 'images/shorts_black.jpg',
+      quantity: 1
+    };
+
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(item => item.id === product.id);
+      if (index !== -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push(product);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Товар додано до корзини!');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Сині джинси</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Сині джинси</h1></header>
+  <main>
+    <img src="images/jeans_blue.jpg" alt="Сині джинси" width="250" />
+    <p>Розмір: S, M, L</p>
+    <p>Колір: Синій</p>
+    <p>Ціна: 699 грн</p>
+
+    <button id="addToCartBtn">Додати до корзини</button>
+
+    <br><a href="jeans.html">← Назад до джинсів</a>
+  </main>
+
+  <script>
+    const product = {
+      id: 'jeans_blue_01',
+      name: 'Сині джинси',
+      size: 'S, M, L',
+      color: 'Синій',
+      price: 699,
+      image: 'images/jeans_blue.jpg',
+      quantity: 1
+    };
+
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(item => item.id === product.id);
+      if (index !== -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push(product);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Товар додано до корзини!');
+    });
+  </script>
+</body>
+</html>

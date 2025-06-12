@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Штани - ClothingUA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ClothingUA</h1>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="hoodies.html">Худі</a>
+      <a href="shorts.html">Шорти</a>
+      <a href="tshirts.html">Футболки</a>
+      <a href="pants.html" class="active">Штани</a>
+      <a href="jeans.html">Джинси</a>
+      <a href="cart.html">Корзина</a>
+      <a href="contact.html">Контакти</a>
+      <a href="register.html">Реєстрація</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Штани</h2>
+    <div class="product-list">
+      <div class="product-card">
+        <img src="images/pants_grey.jpg" alt="Сірі штани" />
+        <div class="product-info">
+          <h4>Сірі штани</h4>
+          <p>Розмір: S, M, L</p>
+          <p>Колір: Сірий</p>
+          <p class="price">599 грн</p>
+          <button class="add-to-cart-btn" data-name="Сірі штани" data-price="599">Додати до корзини</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/pants_black.jpg" alt="Чорні штани" />
+        <div class="product-info">
+          <h4>Чорні штани</h4>
+          <p>Розмір: M, L, XL</p>
+          <p>Колір: Чорний</p>
+          <p class="price">650 грн</p>
+          <button class="add-to-cart-btn" data-name="Чорні штани" data-price="650">Додати до корзини</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Більше 5 років на ринку.&copy; 2025 ClothingUA. Всі права захищені.</p>
+    <p>Телефон: +38 (067) 123-45-67</p>
+    <p>Email: info@clothingua.com</p>
+    <p>Адреса: м. Луцьк, вул. Конякіна, 7</p>
+  </footer>
+
+  <script>
+    // Додаємо товар у корзину (проста логіка через localStorage)
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const price = btn.dataset.price;
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({name, price});
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${name} додано до корзини!`);
+      });
+    });
+  </script>
+</body>
+</html>

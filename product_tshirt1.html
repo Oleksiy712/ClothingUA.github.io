@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Біла футболка</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Біла футболка</h1></header>
+  <main>
+    <img src="images/tshirt_white.jpg" alt="Біла футболка" width="250" />
+    <p>Розмір: S, M, L</p>
+    <p>Колір: Білий</p>
+    <p>Ціна: 299 грн</p>
+
+    <button id="addToCartBtn">Додати до корзини</button>
+
+    <br><a href="tshirts.html">← Назад до футболок</a>
+  </main>
+
+  <script>
+    const product = {
+      id: 'tshirt_white_01',
+      name: 'Біла футболка',
+      size: 'S, M, L',
+      color: 'Білий',
+      price: 299,
+      image: 'images/tshirt_white.jpg',
+      quantity: 1
+    };
+
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(item => item.id === product.id);
+      if (index !== -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push(product);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Товар додано до корзини!');
+    });
+  </script>
+</body>
+</html>

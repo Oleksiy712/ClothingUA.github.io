@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Вхід до акаунту</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Вхід</h1></header>
+  <main>
+    <form id="loginForm">
+      <label>
+        Email:<br />
+        <input type="email" id="email" required />
+      </label><br /><br />
+
+      <label>
+        Пароль:<br />
+        <input type="password" id="password" required />
+      </label><br /><br />
+
+      <button type="submit">Увійти</button>
+    </form>
+
+    <p id="message"></p>
+    <p>Нема акаунту? <a href="register.html">Зареєструватися</a></p>
+  </main>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+
+      const user = users.find(user => user.email === email && user.password === password);
+
+      if (user) {
+        // Зберігаємо активного користувача
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+        message.style.color = 'green';
+        message.textContent = 'Вхід успішний! Перенаправлення...';
+
+        // Наприклад, переходимо на головну сторінку
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } else {
+        message.style.color = 'red';
+        message.textContent = 'Неправильний email або пароль.';
+      }
+    });
+  </script>
+</body>
+</html>

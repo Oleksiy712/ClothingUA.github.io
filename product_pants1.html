@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Сірі штани</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>Сірі штани</h1></header>
+  <main>
+    <img src="images/pants_grey.jpg" alt="Сірі штани" width="250" />
+    <p>Розмір: S, M, L</p>
+    <p>Колір: Сірий</p>
+    <p>Ціна: 599 грн</p>
+
+    <button id="addToCartBtn">Додати до корзини</button>
+
+    <br><a href="pants.html">← Назад до штанів</a>
+  </main>
+
+  <script>
+    const product = {
+      id: 'pants_grey_01',
+      name: 'Сірі штани',
+      size: 'S, M, L',
+      color: 'Сірий',
+      price: 599,
+      image: 'images/pants_grey.jpg',
+      quantity: 1
+    };
+
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(item => item.id === product.id);
+      if (index !== -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push(product);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Товар додано до корзини!');
+    });
+  </script>
+</body>
+</html>
