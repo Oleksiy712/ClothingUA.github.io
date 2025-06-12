@@ -48,17 +48,17 @@
     <p>Адреса: м. Луцьк, вул. Конякіна, 7</p>
     </div>
 
-  <div class="floating-map">
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.612711015161!2d25.30061117666247!3d50.74159857166533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47259903810c1453%3A0x5aa514b034f330a!2z0LLRg9C7LiDQmtGA0LDQvdCw0Y8gNywg0JvRjNCy0ZbQstGB0LrQsNGPINCf0YDQvtC80LXQvdGMLCDQnNC-0YHQutCy0LAsIDAzMDAw!5e0!3m2!1suk!2sua!4v1718202506121!5m2!1suk!2sua" 
-    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy">
-  </iframe>
-  <a 
-    class="map-button" 
-    href="https://www.google.com/maps/place/вул.+Конякіна,+7,+Луцьк" 
-    target="_blank" 
-    rel="noopener">
-    Відкрити на Google Maps
+  <div class="floating-map" id="floatingMap">
+  <button class="close-map" onclick="closeMap()">×</button>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.356142488314!2d25.317857915684977!3d50.74709647950727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47248df6ec94ff1d%3A0xcaba530a983914d2!2sVulytsya%20Konyakina%2C%207%2C%20Lutsk!5e0!3m2!1suk!2sua!4v1686600000000!5m2!1suk!2sua"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+  <button class="map-button" onclick="openMap()">Показати карту</button>
+</div>
+
     </a>
   </div>
   </footer>
