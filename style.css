@@ -357,4 +357,27 @@ footer {
     box-shadow: 0 7px 22px rgba(0, 61, 128, 0.9);
   }
 }
+.close-map {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: #ff4c4c;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(255, 0, 0, 0.7);
+  z-index: 1001;
+  user-select: none;
+  line-height: 28px;
+  text-align: center;
+  padding: 0;
+}
+.close-map:hover {
+  background: #cc0000;
+}
 
